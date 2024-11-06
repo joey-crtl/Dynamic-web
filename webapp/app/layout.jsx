@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased w-full`}
       >
-        <div className="flex flex-col justify-between relative">
+        <div className="h-[100vh]">
           {children}
         </div>
       </body>

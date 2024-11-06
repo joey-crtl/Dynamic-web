@@ -17,11 +17,12 @@ export default function NewsUpdateSection() {
             title={data.title} 
             description={data.description}  
             date={data.date}
+            id={data.id}
           />
         ))}
         {news.length > 6 && (
           <div className="col-span-2 md:col-span-3">
-            <Link href={""}><h3 className={`w-full text-center bg-[${Colors.primary}] shadow  text-white py-2 rounded`}>View More</h3></Link>
+            <Link href={"/news"}><h3 className={`w-full text-center bg-[${Colors.primary}] shadow  text-white py-2 rounded`}>View More</h3></Link>
           </div>
         )}
       </div>

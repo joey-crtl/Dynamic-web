@@ -11,28 +11,21 @@ import { Colors } from '@/constants/colors'
 import InstitutesSection from '@/components/home/InstitutesSection'
 import Navbar from '@/components/home/Navbar'
 import Footer from '@/components/home/Footer'
+import CustomButton from '@/components/CustomButton'
+import HeroSection from '@/components/common/HeroSection'
+import Topbar from '@/components/common/Topbar'
 
 
 
 
 export default function Home() {
   return (
-    <div>
+    <div className='bg-[#F1F1F1] h-full'>
       <Navbar />
-
-      <section className={`bg-[${Colors.background[1]}] w-full h-[720px] flex justify-center items-center`}>
-        <h1 className='text-center text-white'>
-          Welcome to <br />
-          <span className='text-[#FEFE00]'>Colegio de Montalban</span>
-        </h1>
-      </section>
-
+      <HeroSection heading={"Welcome to"} sub={"Colegio de Montalban"} />
       <NewsUpdateSection />
-
       <AnnouncementSection />
-      
       <InstitutesSection />
-
       <Footer />
     </div>
   )

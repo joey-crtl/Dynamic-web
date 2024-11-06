@@ -6,7 +6,7 @@ import React from 'react'
 
 export default function Navbar() {
   return (
-    <nav className='menu__bar'>
+    <nav className='menu__bar z-10'>
         <ul className='flex flex-col md:flex-row justify-between items-center'>
             <li>
                 <Link className='link' href={""}>Portal ▼</Link>

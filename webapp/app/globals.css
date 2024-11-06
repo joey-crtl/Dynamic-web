@@ -5,7 +5,7 @@
 
 /* TYPOGRAPHY */
 h1 {
-    @apply text-[32px] font-bold
+    @apply text-[42px] font-bold
 }
 
 h2 {
@@ -26,13 +26,13 @@ p {
 }
 
 .paddingvr {
-    @apply p-[24px] lg:py-[50px] lg:px-[160px]
+    @apply p-[24px] lg:py-[50px] lg:px-[160px] 
 }
 
 
 /* NAVBAR */
 .menu__bar {
-    @apply  text-white absolute w-full px-[160px] pt-12
+    @apply  text-white absolute w-full px-[160px] pt-12 hidden md:block
 }
 
 
@@ -59,4 +59,31 @@ p {
 
 .menu__bar ul li:hover .dropdown__menu {
     @apply block
+}
+
+
+.hero-section {
+    background-image: url('../public/images/prrc-building.jpeg');
+    background-size: cover;
+    background-position: center;
+}
+
+
+
+/* TABLE  */
+
+.program-table {
+    @apply w-full 
+}
+
+.program-table tbody {
+    @apply  w-full flex flex-col
+}
+
+.program-table tbody .course { 
+    @apply w-full flex justify-between items-center
+}
+
+.program-table th, .program-table td {
+    @apply border p-2 w-full text-center
 }
