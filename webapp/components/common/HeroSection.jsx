@@ -4,7 +4,7 @@ import React from 'react'
 
 export default function HeroSection({heading, sub}) {
   return (
-    <section className={`bg-[${Colors.background[1]}] w-full h-[320px] md:h-[520px] flex justify-center items-center relative`}>
+    <section className={`bg-[${Colors.primary}] w-full h-[320px] md:h-[520px] flex justify-center items-center relative`}>
         <Image src={require("../../public/images/prrc-building.jpeg")} className='h-full w-full object-cover opacity-5 absolute' />
         <h1 className='text-center text-white'>
             {heading} <br />

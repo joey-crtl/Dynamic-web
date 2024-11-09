@@ -15,6 +15,7 @@ export default function StudentLayout({ children }) {
   );
 }
 
+
 const InnerLayout = ({ children }) => {
   const router = useRouter();
   const pathname = usePathname();
@@ -28,7 +29,7 @@ const InnerLayout = ({ children }) => {
   };
 
   return (
-    <div className={`h-screen overflow-hidden ${isDarkMode ? `bg-[${Colors.background[1]}] text-white` : 'bg-white text-black'}`}>
+    <div className={`h-screen overflow-hidden ${isDarkMode ? `bg-[#282828] text-white` : 'bg-white text-black'}`}>
       <Topbar />
       <div className="h-[calc(100%-84px)] grid grid-cols-5">
         <div className="col-span-1 h-full shadow-md p-6 flex flex-col gap-3">
