@@ -1,7 +1,10 @@
+import AuthLayout from '@/components/portal/AuthLayout'
 import React from 'react'
 
-export default function PortalLoginPage() {
+export default function StudentLoginPage() {
   return (
-    <div>LoginPage</div>
+    <AuthLayout>
+      <h2>Login</h2>
+    </AuthLayout>
   )
 }

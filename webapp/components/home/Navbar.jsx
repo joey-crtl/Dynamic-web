@@ -24,7 +24,7 @@ export default function Navbar() {
             <Link className='link' href={""}>Organizations ▼</Link>
                 <div className='dropdown__menu'>
                     <ul>
-                    <li><Link className='link' href={""}>CSS</Link></li>
+                    <li><Link className='link' href={"/organizations/css"}>CSS</Link></li>
                     <li><Link className='link' href={""}>Sandbox</Link></li>
                     </ul>
                 </div>
