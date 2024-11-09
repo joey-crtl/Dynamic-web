@@ -12,8 +12,8 @@ export default function Navbar() {
                 <Link className='link' href={""}>Portal ▼</Link>
                 <div className='dropdown__menu'>
                     <ul>
-                    <li><Link className='link' href={"student/login"}>Student</Link></li>
-                    <li><Link className='link' href={"instructor/login"}>Instructor</Link></li>
+                    <li><Link className='link' href={"/student/login"}>Student</Link></li>
+                    <li><Link className='link' href={"/instructor/login"}>Instructor</Link></li>
                     </ul>
                 </div>
             </li>

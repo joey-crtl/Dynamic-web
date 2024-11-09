@@ -19,7 +19,7 @@ export default function StudentLayout({ children }) {
 const InnerLayout = ({ children }) => {
   const router = useRouter();
   const pathname = usePathname();
-  const { isDarkMode, toggleTheme } = useTheme(); // Use the context
+  const { isDarkMode, toggleTheme } = useTheme();
 
   const buttonStyles = {
     dashboard: pathname === '/student/dashboard' ? `text-white bg-[${Colors.primary}]` : "",

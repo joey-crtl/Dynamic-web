@@ -10,7 +10,7 @@ export default function Topbar() {
 
   return (
     <div className={`w-full flex justify-between items-center p-6 shadow-md ${isDarkMode ? `bg-[${Colors.background[1]}]` : 'bg-white'}`}>
-      <h2 className={`${isDarkMode ? 'text-white' : 'text-black'}`}>Student Portal</h2>
+      <h2 className={`${isDarkMode ? 'text-white' : 'text-black'}`}>Instructor Portal</h2>
 
       <div className='flex items-center gap-4'>
         <button onClick={toggleTheme} className='flex items-center'>
