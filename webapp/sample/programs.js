@@ -5,7 +5,7 @@ export const Programs = [
         year_level: [
             {
                 year: "1st year",
-                semester: "1st semester",
+                semester: "1st Semester",
                 courses: [
                     {
                         course_code: "CCITCOM",
@@ -60,7 +60,7 @@ export const Programs = [
             },
             {
                 year: "1st year",
-                semester: 2,
+                semester: "2nd Semester",
                 courses: [
                     {
                         course_code: "CCITCOM",
@@ -114,8 +114,8 @@ export const Programs = [
                 ]
             },
             {
-                year: 2,
-                semester: 1,
+                year: "2nd Year",
+                semester: "1st Semester",
                 courses: [
                     {
                         course_code: "CCPROG3",
@@ -175,8 +175,8 @@ export const Programs = [
                 ]
             },
             {
-                year: 2,
-                semester: 2,
+                year: "2nd Year",
+                semester: "2nd Semester",
                 courses: [
                     {
                         course_code: "CCITCOM",
@@ -230,8 +230,8 @@ export const Programs = [
                 ]
             },
             {
-                year: 3,
-                semester: 1,
+                year: "3rd Year",
+                semester: "1st Semester",
                 courses: [
                     {
                         course_code: "ITNETW2",
@@ -291,8 +291,8 @@ export const Programs = [
                 ]
             },
             {
-                year: 3,
-                semester: 2,
+                year: "3rd Year",
+                semester: "2nd Semester",
                 courses: [
                     {
                         course_code: "CCITCOM",
@@ -334,8 +334,8 @@ export const Programs = [
                 ]
             },
             {
-                year: 4,
-                semester: 1,
+                year: "4th Year",
+                semester: "1st Semester",
                 courses: [
                     {
                         course_code: "CAPSTONE 2",
@@ -346,8 +346,8 @@ export const Programs = [
                 ]
             },
             {
-                year: 4,
-                semester: 1,
+                year: "4th year",
+                semester: "2nd Semester",
                 courses: [
                     {
                         course_code: "PRACTICUM(486)",
@@ -488,7 +488,7 @@ export const Programs = [
             },
             {
                 year: "2nd Year",
-                semester: "2nd Semester",
+                semester: "1st Semester",
                 courses: [
                     {
                         course_code: "TCDIFFR",
@@ -922,7 +922,7 @@ export const Programs = [
             },
             {
                 year: "2nd Year",
-                semester: "2nd Semester",
+                semester: "1st Semester",
                 courses: [
                     {
                         course_code: "HRMADOM ",
