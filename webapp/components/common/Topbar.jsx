@@ -5,12 +5,12 @@ import Image from 'next/image';
 import React from 'react';
 import { Colors } from '@/constants/colors';
 
-export default function Topbar() {
+export default function Topbar({heading}) {
   const { isDarkMode, toggleTheme } = useTheme(); 
 
   return (
     <div className={`w-full flex justify-between items-center p-6 shadow-md ${isDarkMode ? `bg-[${Colors.background[1]}]` : 'bg-white'}`}>
-      <h2 className={`${isDarkMode ? 'text-white' : 'text-black'}`}>Instructor Portal</h2>
+      <h2 className={`${isDarkMode ? 'text-white' : 'text-black'}`}>{heading}</h2>
 
       <div className='flex items-center gap-4'>
         <button onClick={toggleTheme} className='flex items-center'>

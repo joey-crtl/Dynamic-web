@@ -59,6 +59,55 @@ export const announcements = [
         description: 'This is a description of announcement 1',
         date: '2022-01-01',
         image: require("@/public/images/announcement.jpg")
+    },
+    {
+        id: 7,
+        title: 'Announcement Title 1',
+        description: 'This is a description of announcement 1',
+        date: '2022-01-01',
+        image: require("@/public/images/announcement.jpg")
+    },
+    {
+        id: 8,
+        title: 'Announcement Title 1',
+        description: 'This is a description of announcement 1',
+        date: '2022-01-01',
+        image: require("@/public/images/announcement.jpg")
+    },
+    {
+        id: 9,
+        title: 'Announcement Title 1',
+        description: 'This is a description of announcement 1',
+        date: '2022-01-01',
+        image: require("@/public/images/announcement.jpg")
+    },
+    {
+        id: 10,
+        title: 'Announcement Title 1',
+        description: 'This is a description of announcement 1',
+        date: '2022-01-01',
+        image: require("@/public/images/announcement.jpg")
+    },
+    {
+        id: 11,
+        title: 'Announcement Title 1',
+        description: 'This is a description of announcement 1',
+        date: '2022-01-01',
+        image: require("@/public/images/announcement.jpg")
+    },
+    {
+        id: 12,
+        title: 'Announcement Title 1',
+        description: 'This is a description of announcement 1',
+        date: '2022-01-01',
+        image: require("@/public/images/announcement.jpg")
+    },
+    {
+        id: 13,
+        title: 'Announcement Title 1',
+        description: 'This is a description of announcement 1',
+        date: '2022-01-01',
+        image: require("@/public/images/announcement.jpg")
     }
 ]
 

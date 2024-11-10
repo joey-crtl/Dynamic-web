@@ -31,11 +31,17 @@ export default function StudentDashboardPage() {
             </div>
           </div>
         </div>
-        <div className={`col-span-2 ${isDarkMode ? `bg-[${Colors.background[1]}]` : `bg-white`} shadow-md rounded-lg flex flex-col items-center justify-between p-3`}>
-          <h2 className={`border-b-2 ${isDarkMode ? `border-[${Colors.accent}]` : `border-[${Colors.primary}]` } inline-block`}>Announcements</h2>
+        <div className={`col-span-2 ${isDarkMode ? `bg-[${Colors.background[1]}]` : `bg-white`} shadow-md rounded-lg flex flex-col items-center p-3`}>
+          <h2 className={`border-b-2 ${isDarkMode ? `border-[${Colors.accent}]` : `border-[${Colors.primary}]`} inline-block mb-8`}>
+            Announcements
+          </h2>
           
-          <div>
-            {announcements.map((data) => {})}
+          <div className='overflow-y-auto hide-scrollbar flex flex-col gap-2' style={{ maxHeight: '245px' }}>
+            {announcements.map((data) => (
+              <Link key={data.id} className='block decoration-black underline' href={`/announcements/${data.id}`}>
+                {data.title}
+              </Link>
+            ))}
           </div>
         </div>
       </div>
