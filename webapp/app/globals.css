@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 
+li {
+    font-weight: 700;
+}
+
 /* TYPOGRAPHY */
 h1 {
     @apply text-[42px] font-bold
@@ -23,6 +27,14 @@ h4 {
 
 p {
     @apply text-base font-normal
+}
+
+.row {
+    @apply border-b-2  flex items-center justify-between  p-3
+}
+
+.data {
+    @apply p-2  flex  justify-center w-full
 }
 
 .paddingvr {
@@ -99,3 +111,26 @@ p {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
 }
+
+
+
+/* MODAL ANIMATION */
+
+/* .fade-enter {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  .fade-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 300ms, transform 300ms;
+  }
+  .fade-exit {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .fade-exit-active {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 300ms, transform 300ms;
+  } */

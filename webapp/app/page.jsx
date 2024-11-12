@@ -14,6 +14,7 @@ import Footer from '@/components/home/Footer'
 import CustomButton from '@/components/CustomButton'
 import HeroSection from '@/components/common/HeroSection'
 import Topbar from '@/components/common/Topbar'
+import Modal from '@/components/common/Modal'
 
 
 

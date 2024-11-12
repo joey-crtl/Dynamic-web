@@ -3,27 +3,23 @@
 import Modal from '@/components/common/Modal'
 import { Colors } from '@/constants/colors';
 import { useTheme } from '@/context/ThemeContext';
-import { announcements, requests } from '@/sample/data';
+import { announcements } from '@/sample/data';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react'
 
 
-const data = requests
+const data = announcements
 
-const ITEMS_PER_PAGE = 9;
-
-
+const ITEMS_PER_PAGE = 7;
 
 
-export default function AdminRequestsPage() {
+export default function AdminAnnouncementPage() {
   const [showModal, setShowModal] = useState(false)
   const [backgroundImage, setBackgroundImage] = useState('');
-  const [searchQuery, setSearchQuery] = useState(''); 
+  const [searchQuery, setSearchQuery] = useState(''); // New state for search query
 
   const { isDarkMode } = useTheme()
-  const [value, setValue] = useState("")
-  const [isPaid, setIsPaid] = useState(false)
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -57,62 +53,17 @@ export default function AdminRequestsPage() {
   
   // Filter items based on search query
   const filteredItems = data.slice('').filter(item => 
-    item.form_type.toLowerCase().includes(searchQuery.toLowerCase()) || 
-    item.status.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    item.requests_no.toLocaleLowerCase().includes(searchQuery.toLocaleLowerCase())
+    item.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+    item.description.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   const currentItems = filteredItems.slice(startIndex, startIndex + ITEMS_PER_PAGE);
-
-
-
-  // PRICES
-  const forms = [
-    {
-      type: 'form 137',
-      price: 10,
-    },
-    {
-      type: 'OVRF',
-      price: 25,
-    },
-    {
-      type: 'Form 1',
-      price: 10,
-    },
-  ]
-
-  // PRINTING
-  const handlePrint = async () => {
-    const printWindow = window.open('', '_blank')
-
-    const phpContent = await response.text
-
-    printWindow.document.write(`
-      <!DOCTYPE html>
-      <html lang="en">
-      <head>
-          <meta charset="UTF-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>Document</title>
-      </head>
-      <body>
-          ${phpContent}
-      </body>
-      </html>  
-      
-    `)
-    printWindow.document.close();
-    printWindow.print();
-    printWindow.close();
-
-  }
   
   return (
     <>
-      <div className='flex flex-col gap-4 '>
+      <div className='flex flex-col gap-4'>
         <div className='flex items-center justify-between'>
-          <h3>Requests</h3>
+          <h3>Announcements</h3>
           <div className='flex items-center gap-3'>
             <div className={`flex items-center ${isDarkMode ? `bg-[#282828] text-white` : 'bg-white text-black'} pl-3 gap-2 rounded-md`}>
                 <Image src={require("@/public/icons/search-dark.png")} alt="search" height={24} width={24} />
@@ -132,60 +83,22 @@ export default function AdminRequestsPage() {
           <table className={`flex flex-col w-full`}>
             <thead className='w-full'>
               <tr className={`flex justify-between items-center bg-[${Colors.primary}] text-white rounded-t-md`}>
-                <th className='data items-center'>Recipt no.</th>
-                <th className='data items-center'>Student no.</th>
-                <th className='data items-center'>Form Type</th>
-                <th className='data items-center'>Price | Qty | Total</th>
-                <th className='data items-center'>Payment Method</th>
-                <th className='data items-center'>Print Status</th>
-                <th className='data items-center'>Print</th>
-                <th className='data items-center'>Actions</th>
+                <th className='data items-center'>Image</th>
+                <th className='data items-center'>Title</th>
+                <th className='data items-center'>Description</th>
+                <th className='data items-center'>Date</th>
+                <th className='data items-center'>Action</th>
               </tr>
             </thead>
-            <tbody className='w-full'>
+            <tbody className='w -full'>
               {currentItems.map(item => (
                 <tr key={item.id} className='row'>
-                  <td className='data items-center'>{item.requests_no}</td>
-                  <td className='data items-center'>{item.student_no}</td>
-                  <td className='data items-center'>{item.form_type}</td>
-                  {forms.map((form) => (
-                    form.type === item.form_type ? (
-                      <td className='data items-center'>
-                        <span>₱ {form.price}</span> &nbsp;| &nbsp; <span>x{item.quantity}</span> &nbsp;| &nbsp; <span>₱ {form.price * item.quantity}</span>
-                      </td>
-                    ) : null
-                  ))}
-                  <td className='data items-center'><span>{item.payment_method}</span> &nbsp;| &nbsp; 
-                    <select 
-                        name="payment" 
-                        id=""
-                        onChange={(e) => setIsPaid(e.target.value)} 
-                        className={`p-1 text-black rounded focus:outline-none ${isPaid !== item.payment_status ? `bg-[${Colors.primary}] border-[${Colors.primary}] `  : `bg-red-600 border-red-600`} bg-opacity-25 border`} 
-                        defaultValue={item.payment_status}>
-                        <option value={true}>Paid</option>
-                        <option value={false}>Unpaid</option>
-                      </select>
-                  </td>
-                  <td className='data items-center'> 
-                    <select 
-                      name="status" 
-                      id=""
-                      onChange={(e) => setValue(e.target.value)} 
-                      className={`p-1 text-black rounded focus:outline-none ${value === item.status ? `bg-[${Colors.primary}] border-[${Colors.primary}] `  : `bg-red-600 border-red-600`} bg-opacity-25 border`} 
-                      defaultValue={item.status}>
-                      <option value="Pending">Pending</option>
-                      <option value="Done">Done</option>
-                    </select>
-                  </td>
                   <td className='data items-center'>
-                    <button
-                      disabled={item.payment_status}
-                      onClick={handlePrint}
-                      className={`${item.payment_status ? `opacity-25` : ``}`}
-                    >
-                      <Image src={require("@/public/icons/printer.png")} className='h-6 w-6' />
-                    </button>
+                    <Image src={item.image} className='object-fit h-[46px] w-[90px]' />
                   </td>
+                  <td className='data items-center'>{item.title}</td>
+                  <td className='data text-justify overflow-y-scroll hide-scrollbar h-[56px]'>{item.description}</td>
+                  <td className='data items-center'>{item.date}</td>
                   <td className='data items-center flex gap-4'>
                     <Link href={""}>
                       <Image src={require("@/public/icons/edit.png")} height={24} width={24} alt="Edit" />
