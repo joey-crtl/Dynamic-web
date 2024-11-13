@@ -5,19 +5,19 @@ import { Colors } from '@/constants/colors';
 import { useTheme } from '@/context/ThemeContext';
 import { announcements, news } from '@/sample/data';
 import Image from 'next/image';
-import React, { useState } from 'react';
+import Link from 'next/link';
+import React, { useState } from 'react'
 
-const data = announcements;
+const data = news;
 const ITEMS_PER_PAGE = 7;
 
-export default function AdminAnnouncementPage() {
+export default function AdminNewsEventsPage() {
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [backgroundImage, setBackgroundImage] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
-  const [currentItem, setCurrentItem] = useState(null);
-
+  const [currentItem, setCurrentItem] = useState(null); // For edit and delete actions
   const { isDarkMode } = useTheme();
 
   const handleFileChange = (event) => {
@@ -31,7 +31,7 @@ export default function AdminAnnouncementPage() {
     }
   };
 
-  // PAGINATION
+  // Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = Math.ceil(data.length / ITEMS_PER_PAGE);
 
@@ -56,8 +56,7 @@ export default function AdminAnnouncementPage() {
   );
 
   const currentItems = filteredItems.slice(startIndex, startIndex + ITEMS_PER_PAGE);
-  
-  // FUNCTIONS
+
   const handleEdit = (item) => {
     setCurrentItem(item);
     setShowEditModal(true);
@@ -74,28 +73,6 @@ export default function AdminAnnouncementPage() {
     setShowDeleteModal(false);
   };
 
-  const handleCloseCreateModal = () => {
-    setShowCreateModal(false);
-    setBackgroundImage(''); // Reset background image
-  };
-
-  const handleCloseEditModal = () => {
-    setShowEditModal(false);
-    setBackgroundImage(''); // Reset background image
-  };
-
-  const handleSubmitCreate = (e) => {
-    e.preventDefault();
-    // Logic to handle create submission
-    handleCloseCreateModal(); // Close modal and reset state
-  };
-
-  const handleSubmitEdit = (e) => {
-    e.preventDefault();
-    // Logic to handle edit submission
-    handleCloseEditModal(); // Close modal and reset state
-  };
-
   return (
     <>
       <div className='flex flex-col gap-4'>
@@ -108,7 +85,7 @@ export default function AdminAnnouncementPage() {
                 type="text"  
                 placeholder='Search' 
                 className='p-3 focus:outline-none rounded-md bg-transparent' 
-                value={searchQuery} 
+                value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)} 
               />
             </div>
@@ -129,7 +106,7 @@ export default function AdminAnnouncementPage() {
             </thead>
             <tbody className='w-full'>
               {currentItems.map(item => (
-                <tr key={item.id} className='row'>
+                <tr key={item.id} class Name='row'>
                   <td className='data items-center'>
                     <Image src={item.image} className='object-fit h-[46px] w-[90px]' />
                   </td>
@@ -162,8 +139,8 @@ export default function AdminAnnouncementPage() {
         </div>
       </div>
 
-      <Modal isOpen={showCreateModal} onClose={handleCloseCreateModal} title={"Create new News or Events"}>
-        <form className='flex flex-col gap-4' onSubmit={handleSubmitCreate}>
+      <Modal isOpen={showCreateModal} onClose={() => setShowCreateModal(false)} title={"Create new News or Events"}>
+        <form className='flex flex-col gap-4'>
           <div style={styles.group}>
             <label style={styles.label} htmlFor="">Title</label>
             <input style={styles.input} type="text" />
@@ -183,7 +160,7 @@ export default function AdminAnnouncementPage() {
                 <div className="flex flex-col items-center justify-center pt-5 pb-6">
                   <svg className="w-8 h-8 mb-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
- </svg>
+                  </svg>
                   <p className="mb-2 text-sm text-gray-500"><span className="font-semibold">Click to upload</span> or drag and drop</p>
                   <p className="text-xs text-gray-500">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
                 </div>
@@ -192,14 +169,14 @@ export default function AdminAnnouncementPage() {
             </div>
           </div>
           <div className='flex items-center justify-between gap-3'>
-            <button type="button" onClick={handleCloseCreateModal} style={styles.button} className='bg-red-600'>Cancel</button>
-            <button type="submit" style={styles.button} className='bg-blue-600'>Submit</button>
+            <button onClick={() => setShowCreateModal(false)} style={styles.button} className='bg-red-600'>Cancel</button>
+            <button style={styles.button} className='bg-blue-600'>Submit</button>
           </div>
         </form>
       </Modal>
 
-      <Modal isOpen={showEditModal} onClose={handleCloseEditModal} title={"Edit News or Events"}>
-        <form className='flex flex-col gap-4' onSubmit={handleSubmitEdit}>
+      <Modal isOpen={showEditModal} onClose={() => setShowEditModal(false)} title={"Edit News or Events"}>
+        <form className='flex flex-col gap-4'>
           <div style={styles.group}>
             <label style={styles.label} htmlFor="">Title</label>
             <input style={styles.input} type="text" defaultValue={currentItem?.title} />
@@ -212,27 +189,12 @@ export default function AdminAnnouncementPage() {
             <label style={styles.label} htmlFor="">Date</label>
             <input style={styles.input} type="date" defaultValue={currentItem?.date} />
           </div>
-          <div style={styles.group}>
-            <label style={styles.label} htmlFor="">Image</label>
-            <div className="flex items-center justify-center w-full">
-              <label htmlFor="edit-dropzone-file" className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer" style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
-                <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                  <svg className="w-8 h-8 mb-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
-                  </svg>
-                  <p className="mb-2 text-sm text-gray-500"><span className="font-semibold">Click to upload</span> or drag and drop</p>
-                  <p className="text-xs text-gray-500">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
-                </div>
-                <input id="edit-dropzone-file" type="file" className="hidden" onChange={handleFileChange} />
-              </label>
-            </div>
-          </div>
           <div className='flex items-center justify-between gap-3'>
-            <button type="button" onClick={handleCloseEditModal} style={styles.button} className='bg-red-600'>Cancel</button>
-            <button type="submit" style={styles.button} className='bg-blue-600'>Save Changes</button>
+            <button onClick={() => setShowEditModal(false)} style={styles.button} className='bg-red-600'>Cancel</button>
+            <button style={styles.button} className='bg-blue-600'>Save Changes</button>
           </div>
         </form>
-      </Modal>    
+      </Modal>
 
       <Modal isOpen={showDeleteModal} onClose={() => setShowDeleteModal(false)} title={"Confirm Delete"}>
         <div className='flex flex-col gap-4'>
@@ -244,7 +206,7 @@ export default function AdminAnnouncementPage() {
         </div>
       </Modal>
     </>
-  );
+  )
 }
 
 const styles = {
